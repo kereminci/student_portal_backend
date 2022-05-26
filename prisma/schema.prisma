@@ -34,3 +34,12 @@ model User {
   Post    Post[]
   Profile Profile?
 }
+
+model Admin {
+  id         Int       @id @default(autoincrement())
+  username   String     @unique @db.VarChar(255)
+  password   String     @db.VarChar(127)
+  name       String?     @db.VarChar(127)
+  surname    String?     @db.VarChar(127)
+  department String?     @db.VarChar(127)
+}
