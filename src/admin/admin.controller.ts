@@ -18,9 +18,10 @@ export class AdminController {
     return this.adminService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.adminService.findOne(+id);
+  @Get(':username')
+  findOne(@Param('username') username: string) {
+    console.log(username)
+    return this.adminService.findOne(username);
   }
 
   @Patch(':id')

@@ -17,8 +17,8 @@ export class AdminService {
     return `This action returns all admin`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} admin`;
+  findOne(username: string) {
+    return this.adminRepo.findOne(username);
   }
 
   update(id: number, updateAdminDto: UpdateAdminDto) {

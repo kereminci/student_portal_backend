@@ -22,16 +22,23 @@ export class AdminRepository {
             }
         })  as AdminEntity;
         
-        return adminEntity;
-        
-        
-        
-        
-
-
-        
+        return adminEntity;   
     }
     
+    async findOne(username: string ) : Promise<AdminEntity>{
+        let adminEntity: AdminEntity = new AdminEntity();
+
+        
+
+        adminEntity = await this.prismaService.admin.findFirst({
+            where: {
+                "username": username
+            }
+        })  as AdminEntity;
+        
+        return adminEntity;   
+    }
+
 
 }
 
