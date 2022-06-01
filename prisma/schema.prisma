@@ -43,3 +43,22 @@ model Admin {
   surname    String?     @db.VarChar(127)
   department String?     @db.VarChar(127)
 }
+
+model Announcements {
+  id          Int        @id @default(autoincrement())
+  title       String     @db.VarChar(255)
+  description String    @db.VarChar(255)
+}
+
+model Activities {
+  id          Int        @id @default(autoincrement())
+  title       String     @db.VarChar(255)
+  description String    @db.VarChar(255)
+}
+
+
+model News {
+  id          Int        @id @default(autoincrement())
+  title       String     @db.VarChar(255)
+  description String    @db.VarChar(255)
+}
