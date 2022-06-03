@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
+import { CreateNewsDto } from './dto/create-news.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 
 @Controller('admin')
@@ -9,7 +10,7 @@ export class AdminController {
 
   @Post('create')
   create(@Body() createAdminDto: CreateAdminDto) {
-    console.log(createAdminDto)
+    
     return this.adminService.create(createAdminDto);
   }
 
@@ -33,4 +34,15 @@ export class AdminController {
   remove(@Param('id') id: string) {
     return this.adminService.remove(+id);
   }
+
+  @Post("/addnews")
+  addNews(@Body() createNews: CreateNewsDto) {
+    console.log(createNews);
+    return this.adminService.addNews(createNews);
+    
+
+
+
+  }
+
 }

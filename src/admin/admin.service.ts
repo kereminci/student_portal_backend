@@ -1,6 +1,7 @@
 
 import { Injectable } from '@nestjs/common';
 import { CreateAdminDto } from './dto/create-admin.dto';
+import { CreateNewsDto } from './dto/create-news.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { AdminRepository } from './repos/admin.repo';
 
@@ -27,5 +28,10 @@ export class AdminService {
 
   remove(id: number) {
     return `This action removes a #${id} admin`;
+  }
+
+  addNews(createNewsDto: CreateNewsDto) {
+    return this.adminRepo.addNews(createNewsDto)
+
   }
 }
