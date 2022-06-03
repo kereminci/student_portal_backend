@@ -3,6 +3,8 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { Admin } from "../dto/admin";
 import { AdminEntity } from "../entities/admin.entity";
 import * as bcrypt from 'bcrypt';
+import { CreateNewsDto } from "../dto/create-news.dto";
+import { NewEntity } from "../entities/news.entity";
 
 
 // does busness logic
@@ -38,6 +40,22 @@ export class AdminRepository {
         
         return adminEntity;   
     }
+
+    async addNews( news: CreateNewsDto ) : Promise<NewEntity>{
+        let newsEntity: NewEntity = new NewEntity();
+        newsEntity.title = news.title;
+        newsEntity.description = news.description;
+
+        newsEntity = await this.prismaService.news.create({
+            data : {
+                ...newsEntity
+            } 
+        }) as NewEntity;
+
+        return newsEntity;  
+    }
+
+  
 
 
 }
