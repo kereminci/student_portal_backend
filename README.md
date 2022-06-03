@@ -52,6 +52,9 @@ $ npx prisma migrate dev
 
 # Generate
 $ npx prisma generate
+
+# Studio
+$ npx prisma studio
 ```
 
 ## Test
