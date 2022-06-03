@@ -35,7 +35,7 @@ export class AdminController {
     return this.adminService.remove(+id);
   }
 
-  @Post("/addnews")
+  @Post("/addnews") // POST localhost:3000/admin/addnews
   addNews(@Body() createNews: CreateNewsDto) {
     console.log(createNews);
     return this.adminService.addNews(createNews);
