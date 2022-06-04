@@ -1,8 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
-import * as bcrypt from 'bcrypt';
 import { DuyuruEntity } from "../entities/duyuru.entity";
 import { CreateDuyuruDto } from "../dto/create-duyuru.dto";
+
+
 
 
 
@@ -14,9 +15,11 @@ export class DuyuruRepository {
     
     async addduyuru( duyuru: CreateDuyuruDto ) : Promise<DuyuruEntity>{
         let duyuruEntity: DuyuruEntity = new DuyuruEntity();
-        duyuruEntity.title=duyuru.title;
+
+        duyuruEntity.title = duyuru.title;
         duyuruEntity.description = duyuru.description;
-        duyuruEntity.id=duyuru.id;
+        
+
         duyuruEntity = await this.prismaService.announcements.create({
             data : {
                 ...duyuruEntity
@@ -26,28 +29,26 @@ export class DuyuruRepository {
         return duyuruEntity;  
     }
 
-    async delduyuru( duyuru: CreateDuyuruDto ) : Promise<DuyuruEntity>{
+    async delduyuru( id: number ) : Promise<DuyuruEntity>{
         let duyuruEntity: DuyuruEntity = new DuyuruEntity();
-        duyuruEntity.title=duyuru.title;
-        duyuruEntity.description = duyuru.description;
-        duyuruEntity.id=duyuru.id;
+
         duyuruEntity = await this.prismaService.announcements.delete({
             where:{
-                id:duyuruEntity.id,
+                id: id,
             }
         }) as DuyuruEntity;
 
         return duyuruEntity;  
     }
     
-    async readduyuru( duyuru: CreateDuyuruDto ) : Promise<DuyuruEntity>{
+    async getduyuru( id: number ) : Promise<DuyuruEntity>{
         let duyuruEntity: DuyuruEntity = new DuyuruEntity();
-        duyuruEntity.title=duyuru.title;
-        duyuruEntity.description = duyuru.description;
-        duyuruEntity.id=duyuru.id;
+        
+
+        
         duyuruEntity = await this.prismaService.announcements.findUnique({
             where:{
-                id:duyuruEntity.id,
+                id: id,
             }
 
         }) as DuyuruEntity;
@@ -55,18 +56,17 @@ export class DuyuruRepository {
         return duyuruEntity;  
     }
 
-    async updateduyuru( duyuru: CreateDuyuruDto ) : Promise<DuyuruEntity>{
+    async updateduyuru( id: number,  duyuru: CreateDuyuruDto ) : Promise<DuyuruEntity>{
+
         let duyuruEntity: DuyuruEntity = new DuyuruEntity();
-        duyuruEntity.title=duyuru.title;
-        duyuruEntity.description = duyuru.description;
-        duyuruEntity.id=duyuru.id;
+
         duyuruEntity = await this.prismaService.announcements.update({
             where:{
-                id:duyuruEntity.id
+                id: id
             },
             data:{
-                description:duyuruEntity.description,
-                title:duyuruEntity.title,
+                description: duyuru.description,
+                title: duyuru.title,
             }
         }) as DuyuruEntity;
 

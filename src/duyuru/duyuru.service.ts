@@ -10,15 +10,15 @@ export class DuyuruService {
     return this.duyuruRepo.addduyuru(createduyuruDto);
   }
 
-  delduyuru(delduyuruDto: CreateDuyuruDto){
-    return this.duyuruRepo.delduyuru(delduyuruDto);
+  delduyuru(id: number){
+    return this.duyuruRepo.delduyuru(+id);
   }
 
-  updateduyuru(updateduyuruDto: CreateDuyuruDto){
-    return this.duyuruRepo.updateduyuru(updateduyuruDto);
+  updateduyuru(id: number ,updateduyuruDto: UpdateDuyuruDto){
+    return this.duyuruRepo.updateduyuru(+id, updateduyuruDto);
   }
 
-  readduyuru(readduyuruDto: CreateDuyuruDto){
-    return this.duyuruRepo.readduyuru(readduyuruDto);
+  getduyuru(id: number){
+    return this.duyuruRepo.getduyuru(+id);
   }
 }

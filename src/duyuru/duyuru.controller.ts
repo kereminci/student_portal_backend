@@ -7,24 +7,26 @@ import { UpdateDuyuruDto } from './dto/update-duyuru.dto';
 export class DuyuruController {
   constructor(private readonly duyuruService: DuyuruService) {}
 
+  // TODO add exception handling to all routes
+
   @Post ("/addduyuru")
   addAnnouncement(@Body() createAnn:CreateDuyuruDto ){
     return this.duyuruService.addduyuru(createAnn);
   }
 
-  @Post ("/delduyuru")
-  delAnnouncement(@Body() delAnn:CreateDuyuruDto ){
-    return this.duyuruService.delduyuru(delAnn);
+  @Post ("/delduyuru/:id")
+  delAnnouncement(@Param('id') id: number ){
+    return this.duyuruService.delduyuru(+id);
   }
 
-  @Post ("/updateduyuru")
-  updateAnnouncement(@Body() updateAnn:CreateDuyuruDto ){
-    return this.duyuruService.updateduyuru(updateAnn);
+  @Post ("/updateduyuru/:id")
+  updateAnnouncement(@Param('id') id:number ,@Body() updateAnn:UpdateDuyuruDto ){
+    return this.duyuruService.updateduyuru(+id, updateAnn);
   }
 
-  @Post ("/readduyuru")
-  readAnnouncement(@Body() readAnn:CreateDuyuruDto ){
-    return this.duyuruService.readduyuru(readAnn);
+  @Get (":id")
+  readAnnouncement(@Param('id') id: number){
+    return this.duyuruService.getduyuru(+id);
   }
 
 
