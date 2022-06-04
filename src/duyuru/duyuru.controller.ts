@@ -7,28 +7,25 @@ import { UpdateDuyuruDto } from './dto/update-duyuru.dto';
 export class DuyuruController {
   constructor(private readonly duyuruService: DuyuruService) {}
 
-  @Post()
-  create(@Body() createDuyuruDto: CreateDuyuruDto) {
-    return this.duyuruService.create(createDuyuruDto);
+  @Post ("/addduyuru")
+  addAnnouncement(@Body() createAnn:CreateDuyuruDto ){
+    return this.duyuruService.addduyuru(createAnn);
   }
 
-  @Get()
-  findAll() {
-    return this.duyuruService.findAll();
+  @Post ("/delduyuru")
+  delAnnouncement(@Body() delAnn:CreateDuyuruDto ){
+    return this.duyuruService.delduyuru(delAnn);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.duyuruService.findOne(+id);
+  @Post ("/updateduyuru")
+  updateAnnouncement(@Body() updateAnn:CreateDuyuruDto ){
+    return this.duyuruService.updateduyuru(updateAnn);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDuyuruDto: UpdateDuyuruDto) {
-    return this.duyuruService.update(+id, updateDuyuruDto);
+  @Post ("/readduyuru")
+  readAnnouncement(@Body() readAnn:CreateDuyuruDto ){
+    return this.duyuruService.readduyuru(readAnn);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.duyuruService.remove(+id);
-  }
+
 }

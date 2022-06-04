@@ -6,23 +6,19 @@ import { DuyuruRepository } from './repos/duyuru.repo';
 @Injectable()
 export class DuyuruService {
   constructor (private readonly duyuruRepo: DuyuruRepository) {}
-  create(createDuyuruDto: CreateDuyuruDto) {
-    return 'This action adds a new duyuru';
+  addduyuru(createduyuruDto: CreateDuyuruDto){
+    return this.duyuruRepo.addduyuru(createduyuruDto);
   }
 
-  findAll() {
-    return `This action returns all duyuru`;
+  delduyuru(delduyuruDto: CreateDuyuruDto){
+    return this.duyuruRepo.delduyuru(delduyuruDto);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} duyuru`;
+  updateduyuru(updateduyuruDto: CreateDuyuruDto){
+    return this.duyuruRepo.updateduyuru(updateduyuruDto);
   }
 
-  update(id: number, updateDuyuruDto: UpdateDuyuruDto) {
-    return `This action updates a #${id} duyuru`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} duyuru`;
+  readduyuru(readduyuruDto: CreateDuyuruDto){
+    return this.duyuruRepo.readduyuru(readduyuruDto);
   }
 }
