@@ -6,29 +6,25 @@ import { UpdateHaberDto } from './dto/update-haber.dto';
 @Controller('haber')
 export class HaberController {
   constructor(private readonly haberService: HaberService) {}
-
-  @Post()
-  create(@Body() createHaberDto: CreateHaberDto) {
-    return this.haberService.create(createHaberDto);
+  
+  @Post("/addhaber")
+  addNews(@Body() createNew: CreateHaberDto) {
+    return this.haberService.addhaber(createNew);
+  }
+  
+  @Post ("/delhaber/:id")
+  delNews(@Param('id') id: number ){
+    return this.haberService.delhaber(+id);
   }
 
-  @Get()
-  findAll() {
-    return this.haberService.findAll();
+  @Post ("/updatehaber/:id")
+  updateNews(@Param('id') id:number ,@Body() updateNew:UpdateHaberDto ){
+    return this.haberService.updatehaber(+id, updateNew);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.haberService.findOne(+id);
+  @Get (":id")
+  readNews(@Param('id') id: number){
+    return this.haberService.gethaber(+id);
   }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateHaberDto: UpdateHaberDto) {
-    return this.haberService.update(+id, updateHaberDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.haberService.remove(+id);
-  }
+  
 }
