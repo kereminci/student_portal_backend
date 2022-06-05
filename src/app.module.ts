@@ -9,6 +9,9 @@ import { ConfigModule } from '@nestjs/config';
 import { DuyuruModule } from './duyuru/duyuru.module';
 import { HaberModule } from './haber/haber.module';
 import { EtkinlikModule } from './etkinlik/etkinlik.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from '@nestjs/passport';
+import { AuthenticatedGuard } from './auth/authenticated.guard';
 
 @Module({
   imports: [AuthModule, AdminModule, UsersModule, PrismaModule, ConfigModule.forRoot({isGlobal: true,}), DuyuruModule, HaberModule, EtkinlikModule],
