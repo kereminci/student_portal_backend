@@ -9,9 +9,10 @@ import { ConfigModule } from '@nestjs/config';
 import { DuyuruModule } from './duyuru/duyuru.module';
 import { HaberModule } from './haber/haber.module';
 import { EtkinlikModule } from './etkinlik/etkinlik.module';
+import { Admin2Module } from './admin2/admin2.module';
 
 @Module({
-  imports: [AuthModule, AdminModule, UsersModule, PrismaModule, ConfigModule.forRoot({isGlobal: true,}), DuyuruModule, HaberModule, EtkinlikModule],
+  imports: [AuthModule, AdminModule, UsersModule, PrismaModule, ConfigModule.forRoot({isGlobal: true,}), DuyuruModule, HaberModule, EtkinlikModule,Admin2Module],
   controllers: [AppController],
   providers: [AppService],
 })
