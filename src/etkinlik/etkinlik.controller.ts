@@ -1,34 +1,33 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { EtkinlikService } from './etkinlik.service';
 import { CreateEtkinlikDto } from './dto/create-etkinlik.dto';
 import { UpdateEtkinlikDto } from './dto/update-etkinlik.dto';
-
+import { EtkinlikRepository } from './repos/etkinlik.repo';
+import { EtkinlikService } from './etkinlik.service';
 @Controller('etkinlik')
 export class EtkinlikController {
   constructor(private readonly etkinlikService: EtkinlikService) {}
 
-  @Post()
-  create(@Body() createEtkinlikDto: CreateEtkinlikDto) {
-    return this.etkinlikService.create(createEtkinlikDto);
+  // TODO add exception handling to all routes
+
+  @Post ("/addEtkinlik")
+  addActivities(@Body() createEtkinilk:CreateEtkinlikDto ){
+    return this.etkinlikService.addEtkinlik(createEtkinilk);
   }
 
-  @Get()
-  findAll() {
-    return this.etkinlikService.findAll();
+  @Post ("/delEtkinlik/:id")
+  delActivities(@Param('id') id: number ){
+    return this.etkinlikService.delEtkinlik(+id);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.etkinlikService.findOne(+id);
+  @Post ("/updateEtkinlik/:id")
+  updateActivities(@Param('id') id:number ,@Body() updateEtkinlik:UpdateEtkinlikDto ){
+    return this.etkinlikService.updateEtkinlik(+id, updateEtkinlik);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEtkinlikDto: UpdateEtkinlikDto) {
-    return this.etkinlikService.update(+id, updateEtkinlikDto);
+  @Get (":id")
+  readActivities(@Param('id') id: number){
+    return this.etkinlikService.getEtkinlik(+id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.etkinlikService.remove(+id);
-  }
+
 }
