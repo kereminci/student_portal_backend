@@ -12,8 +12,10 @@ export class HaberRepository {
     
     async addhaber( haber: CreateHaberDto ) : Promise<HaberEntity>{
         let haberEntity: HaberEntity = new HaberEntity();
-        haberEntity.title=haber.title;
+
+        haberEntity.title= haber.title;
         haberEntity.description = haber.description;
+        
         haberEntity = await this.prismaService.news.create({
             data : {
                 ...haberEntity

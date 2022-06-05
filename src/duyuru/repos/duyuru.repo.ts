@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { DuyuruEntity } from "../entities/duyuru.entity";
 import { CreateDuyuruDto } from "../dto/create-duyuru.dto";
+import { UpdateDuyuruDto } from "../dto/update-duyuru.dto";
 
 
 
@@ -56,7 +57,7 @@ export class DuyuruRepository {
         return duyuruEntity;  
     }
 
-    async updateduyuru( id: number,  duyuru: CreateDuyuruDto ) : Promise<DuyuruEntity>{
+    async updateduyuru( id: number,  duyuru: UpdateDuyuruDto ) : Promise<DuyuruEntity>{
 
         let duyuruEntity: DuyuruEntity = new DuyuruEntity();
 
