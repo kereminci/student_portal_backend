@@ -22,6 +22,7 @@ async function bootstrap() {
   //app.useGlobalGuards(new AuthenticatedGuard())
   app.use(passport.initialize());
   app.use(passport.session())
+  app.enableCors()
 
 
   await app.listen(process.env.PORT || 3000);

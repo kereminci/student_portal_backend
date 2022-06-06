@@ -10,6 +10,7 @@ import { DuyuruModule } from './duyuru/duyuru.module';
 import { HaberModule } from './haber/haber.module';
 import { EtkinlikModule } from './etkinlik/etkinlik.module';
 
+
 @Module({
   imports: [AuthModule, AdminModule, UsersModule, PrismaModule, ConfigModule.forRoot({isGlobal: true,}), DuyuruModule, HaberModule, EtkinlikModule],
   controllers: [AppController],

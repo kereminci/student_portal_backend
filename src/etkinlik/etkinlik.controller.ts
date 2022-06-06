@@ -9,6 +9,7 @@ export class EtkinlikController {
 
   // TODO add exception handling to all routes
 
+  
   @Post ("/addEtkinlik")
   addActivities(@Body() createEtkinilk:CreateEtkinlikDto ){
     return this.etkinlikService.addEtkinlik(createEtkinilk);
